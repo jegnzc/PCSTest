@@ -1,7 +1,4 @@
-using Application.Interfaces;
-using Application.Services;
-using Domain.Interfaces;
-using Infrastructure.DataAccess.MongoDB;
+using TestPCS.Configuration;
 using TestPCS.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,12 +8,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var mongoDBSettings = builder.Configuration.GetSection("MongoDB");
-
-builder.Services.AddSingleton(sp => new MongoDbContext(mongoDBSettings["ConnectionString"], mongoDBSettings["DatabaseName"]));
-
-builder.Services.AddScoped(typeof(IRepository<>), typeof(MongoRepository<>));
-builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddApplication().AddInfrastructure(builder.Configuration);
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
@@ -31,8 +23,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
 
 app.UseExceptionHandler();
 
