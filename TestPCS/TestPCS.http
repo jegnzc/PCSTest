@@ -5,7 +5,7 @@ GET {{TestPCS_HostAddress}}/products
 Accept: application/json
 
 ### Get by ID
-GET {{TestPCS_HostAddress}}/products/65f7eabd570fc92e5b4020f9
+GET {{TestPCS_HostAddress}}/products/65f7f171cc5e45676768996b
 Accept: application/json
 
 ### Create
@@ -19,7 +19,7 @@ Accept: application/json
 }
 
 ### Upsert
-PUT {{TestPCS_HostAddress}}/products/65f7eabd570fc92e5b4020f9
+PUT {{TestPCS_HostAddress}}/products/65f7f171cc5e45676768996b
 Content-Type: application/json
 Accept: application/json
 
@@ -29,5 +29,5 @@ Accept: application/json
 }
 
 ### Delete
-DELETE {{TestPCS_HostAddress}}/products/65f7eabd570fc92e5b4020f9
+DELETE {{TestPCS_HostAddress}}/products/65f7f170cc5e45676768996a
 Accept: application/json
