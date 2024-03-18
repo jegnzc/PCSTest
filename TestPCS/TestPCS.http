@@ -1,6 +1,33 @@
 @TestPCS_HostAddress = http://localhost:5162
 
-GET {{TestPCS_HostAddress}}/products/
+### Get All
+GET {{TestPCS_HostAddress}}/products
 Accept: application/json
 
-###
+### Get by ID
+GET {{TestPCS_HostAddress}}/products/65f7eabd570fc92e5b4020f9
+Accept: application/json
+
+### Create
+POST {{TestPCS_HostAddress}}/products
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Product",
+  "description": "This is the description."
+}
+
+### Upsert
+PUT {{TestPCS_HostAddress}}/products/65f7eabd570fc92e5b4020f9
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Updated Product",
+  "description": "This is the updated description."
+}
+
+### Delete
+DELETE {{TestPCS_HostAddress}}/products/65f7eabd570fc92e5b4020f9
+Accept: application/json

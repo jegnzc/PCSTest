@@ -23,7 +23,7 @@ public class MongoRepository<T> : IRepository<T> where T : BaseEntity
 
     public async Task DeleteAsync(string id)
     {
-        var filter = Builders<T>.Filter.Eq(doc => doc.Id, new ObjectId(id));
+        var filter = Builders<T>.Filter.Eq("_id", new ObjectId(id));
         await _collection.DeleteOneAsync(filter);
     }
 
@@ -35,14 +35,14 @@ public class MongoRepository<T> : IRepository<T> where T : BaseEntity
 
     public async Task<T> GetByIdAsync(string id)
     {
-        var filter = Builders<T>.Filter.Eq(doc => doc.Id, new ObjectId(id));
+        var filter = Builders<T>.Filter.Eq("_id", new ObjectId(id));
         return await _collection.Find(filter).SingleOrDefaultAsync();
     }
 
 
     public async Task UpdateAsync(string id, T entity)
     {
-        var filter = Builders<T>.Filter.Eq(doc => doc.Id, new ObjectId(id));
+        var filter = Builders<T>.Filter.Eq("_id", new ObjectId(id));
         await _collection.ReplaceOneAsync(filter, entity, new ReplaceOptions { IsUpsert = true });
     }
 }
