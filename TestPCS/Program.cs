@@ -1,7 +1,7 @@
 using Application.Interfaces;
 using Application.Services;
 using Domain.Interfaces;
-using Infrastructure;
+using Infrastructure.DataAccess.MongoDB;
 
 var builder = WebApplication.CreateBuilder(args);
 
