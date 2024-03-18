@@ -3,7 +3,7 @@ using Domain.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace Infrastructure;
+namespace Infrastructure.DataAccess.MongoDB;
 
 public class MongoRepository<T> : IRepository<T> where T : BaseEntity
 {
