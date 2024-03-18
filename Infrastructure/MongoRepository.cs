@@ -39,10 +39,12 @@ public class MongoRepository<T> : IRepository<T> where T : BaseEntity
         return await _collection.Find(filter).SingleOrDefaultAsync();
     }
 
-
     public async Task UpdateAsync(string id, T entity)
     {
+        entity.Id = id;
+
         var filter = Builders<T>.Filter.Eq("_id", new ObjectId(id));
         await _collection.ReplaceOneAsync(filter, entity, new ReplaceOptions { IsUpsert = true });
     }
+
 }

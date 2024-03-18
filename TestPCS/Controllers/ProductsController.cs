@@ -41,13 +41,14 @@ public class ProductsController(IProductService productService) : ControllerBase
 
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<ProductUpdateResponse>> UpdateProduct(string id, [FromBody] ProductUpdateRequest request)
+    public async Task<ActionResult> UpdateProduct(string id, [FromBody] ProductUpdateRequest request)
     {
         var product = new Product { Name = request.Name, Description = request.Description };
 
         await _productService.UpdateProductAsync(id, product);
         return NoContent();
     }
+
 
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteProduct(string id)
