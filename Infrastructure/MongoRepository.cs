@@ -9,8 +9,9 @@ public class MongoRepository<T> : IRepository<T> where T : BaseEntity
 {
     private readonly IMongoCollection<T> _collection;
 
-    public MongoRepository(MongoDbContext context, string collectionName)
+    public MongoRepository(MongoDbContext context)
     {
+        var collectionName = typeof(T).Name.ToLowerInvariant();
         _collection = context.GetCollection<T>(collectionName);
     }
 
