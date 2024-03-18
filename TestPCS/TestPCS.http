@@ -1,6 +1,6 @@
 @TestPCS_HostAddress = http://localhost:5162
 
-GET {{TestPCS_HostAddress}}/weatherforecast/
+GET {{TestPCS_HostAddress}}/products/
 Accept: application/json
 
 ###

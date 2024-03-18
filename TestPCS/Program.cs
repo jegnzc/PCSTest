@@ -1,5 +1,6 @@
 using Application;
 using Application.Interfaces;
+using Domain;
 using Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,8 @@ builder.Services.AddSwaggerGen();
 var mongoDBSettings = builder.Configuration.GetSection("MongoDB");
 
 builder.Services.AddSingleton(sp => new MongoDbContext(mongoDBSettings["ConnectionString"], mongoDBSettings["DatabaseName"]));
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(MongoRepository<>));
 builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
