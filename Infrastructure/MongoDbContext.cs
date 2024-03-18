@@ -1,0 +1,20 @@
+﻿using MongoDB.Driver;
+
+namespace Infrastructure;
+
+public class MongoDbContext
+{
+    private readonly IMongoDatabase _database;
+
+    public MongoDbContext(string connectionString, string databaseName)
+    {
+        var client = new MongoClient(connectionString);
+        _database = client.GetDatabase(databaseName);
+    }
+
+    // Initial to test connectivity
+    public IMongoCollection<TEntity> GetCollection<TEntity>(string name)
+    {
+        return _database.GetCollection<TEntity>(name);
+    }
+}
