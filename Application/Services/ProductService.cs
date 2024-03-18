@@ -1,8 +1,8 @@
 ﻿using Application.Interfaces;
-using Domain;
 using Domain.Entities;
+using Domain.Interfaces;
 
-namespace Application;
+namespace Application.Services;
 
 public class ProductService : IProductService
 {

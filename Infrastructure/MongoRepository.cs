@@ -1,5 +1,5 @@
-﻿using Domain;
-using Domain.Entities;
+﻿using Domain.Entities;
+using Domain.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
